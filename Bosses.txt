@@ -1,0 +1,43 @@
+Древний лучник - ancientArcher
+Слизень - slime
+Стальной страж - steelGuard
+Кошмар - nightmare
+Близнецы - twins
+Повелитель огня - fireLord
+Паучиха - spider
+Утопленник - drowned
+Колдун - wizard
+Смерть - death
+Наездник - rider
+Разбойник - pillager
+Лавовый куб - lavaCube
+Призрачный охотник - ghostHunter
+Чёрный дракон - blackDragon
+Гигант - giant
+Снежный монстр - snowMonster
+Проклятый легион - accursedLegion
+Монстр - monstr
+Некромант - necromancer
+Пожиратель тьмы - eaterOfDarkness
+Чудовище - chudo
+Кузнец - blacksmith
+Могущественный шалкер - mightyShulker
+Заклинатель - caster
+Мёртвый всадний - deadHourseman
+Самурай - samurai
+Повелитель мёртвых - deadLord
+Теневой лорд - shadowLord
+Голиаф - goliath
+Разрушитель- destroyer
+Крик - scream
+Спектральный куб - spectralCube
+Тень - shadow
+Вестник ада - heraldOfHell
+Ифрит - blaze
+Пиглин - piglin
+Хоглин - hoglin
+Зомби пиглин - zombiePiglin
+Брутальный пиглин - brutalPiglin
+Магма - magma
+Зоглин - zoglin
+Адский рыцарь - hellKnight
