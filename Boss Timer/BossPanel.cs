@@ -46,7 +46,7 @@ namespace Boss_Timer
             panel.BorderStyle = BorderStyle.FixedSingle;
 
             panel.Controls.Add(progressBar);
-            progressBar.Width = 136;
+            progressBar.Width = 102;
             progressBar.Height = 10;
             progressBar.Left = 64;
             progressBar.Maximum = bossCD;
@@ -116,6 +116,11 @@ namespace Boss_Timer
                     textSeconds.Text = Convert.ToString((seconds - Convert.ToInt32(textHours.Text) * 3600) - (Convert.ToInt32(textMinutes.Text) * 60));
                     seconds--;
                     progressBar.Value = seconds;
+                    
+                    if (!Int32.TryParse(ConfigurationManager.AppSettings["msInSec"], out msInSec))
+                    {
+                        throw new Exception("Can't read config");
+                    }
 
                     await Task.Delay(msInSec);
                 }
@@ -142,15 +147,22 @@ namespace Boss_Timer
 
         public void StartTimer()
         {
-            isPlaying = true;
-            seconds = (Convert.ToInt32(textHours.Text) * 3600) + (Convert.ToInt32(textMinutes.Text) * 60) + Convert.ToInt32(textSeconds.Text);
-            TimeTick();
+            if (!isPlaying)
+            {
+                isPlaying = true;
+                seconds = (Convert.ToInt32(textHours.Text) * 3600) + (Convert.ToInt32(textMinutes.Text) * 60) + Convert.ToInt32(textSeconds.Text);
+                TimeTick();
+            }
+            
         }
         public void StartTimer(int bossCD)
         {
-            isPlaying = true;
-            seconds = bossCD;
-            TimeTick();
+            if (!isPlaying)
+            {
+                isPlaying = true;
+                seconds = bossCD;
+                TimeTick();
+            }
         }
         public void CreateEventHandlers()
         {
