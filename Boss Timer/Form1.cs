@@ -7,6 +7,50 @@ namespace Boss_Timer
     public partial class Form1 : Form
     {
 
+        BossPanel AncientArcher = new BossPanel();
+        BossPanel Slime = new BossPanel();
+        BossPanel SteelGuard = new BossPanel();
+        BossPanel Nightmare = new BossPanel();
+        BossPanel Twins = new BossPanel();
+        BossPanel FireLord = new BossPanel();
+        BossPanel Spider = new BossPanel();
+        BossPanel Drowned = new BossPanel();
+        BossPanel Wizard = new BossPanel();
+        BossPanel Death = new BossPanel();
+        BossPanel Rider = new BossPanel();
+        BossPanel Pillager = new BossPanel();
+        BossPanel LavaCube = new BossPanel();
+        BossPanel GhostHunter = new BossPanel();
+        BossPanel BlackDragon = new BossPanel();
+        BossPanel Giant = new BossPanel();
+        BossPanel SnowMonster = new BossPanel();
+        BossPanel AccursedLegion = new BossPanel();
+        BossPanel Monstr = new BossPanel();
+        BossPanel Necromancer = new BossPanel();
+        BossPanel EaterOfDarkness = new BossPanel();
+        BossPanel Chudo = new BossPanel();
+        BossPanel Blacksmith = new BossPanel();
+        BossPanel MightyShulker = new BossPanel();
+        BossPanel Caster = new BossPanel();
+        BossPanel DeadHourseman = new BossPanel();
+        BossPanel Samurai = new BossPanel();
+        BossPanel DeadLord = new BossPanel();
+        BossPanel ShadowLord = new BossPanel();
+        BossPanel Goliath = new BossPanel();
+        BossPanel Destroyer = new BossPanel();
+        BossPanel Scream = new BossPanel();
+        BossPanel SpectralCube = new BossPanel();
+        BossPanel Shadow = new BossPanel();
+        BossPanel HeraldOfHell = new BossPanel();
+        BossPanel Blaze = new BossPanel();
+        BossPanel Piglin = new BossPanel();
+        BossPanel Hoglin = new BossPanel();
+        BossPanel ZombiePiglin = new BossPanel();
+        BossPanel BrutalPiglin = new BossPanel();
+        BossPanel Magma = new BossPanel();
+        BossPanel Zoglin = new BossPanel();
+        BossPanel HellKnight = new BossPanel();
+
         public Form1()
         {
 
@@ -17,55 +61,25 @@ namespace Boss_Timer
         public void ConfigurateForm()
         {
 
-            BossPanel AncientArcher = new BossPanel();
-            BossPanel Slime = new BossPanel();
-            BossPanel SteelGuard = new BossPanel();
-            BossPanel Nightmare = new BossPanel();
-            BossPanel Twins = new BossPanel();
-            BossPanel FireLord = new BossPanel();
-            BossPanel Spider = new BossPanel();
-            BossPanel Drowned = new BossPanel();
-            BossPanel Wizard = new BossPanel();
-            BossPanel Death = new BossPanel();
-            BossPanel Rider = new BossPanel();
-            BossPanel Pillager = new BossPanel();
-            BossPanel LavaCube = new BossPanel();
-            BossPanel GhostHunter = new BossPanel();
-            BossPanel BlackDragon = new BossPanel();
-            BossPanel Giant = new BossPanel();
-            BossPanel SnowMonster = new BossPanel();
-            BossPanel AccursedLegion = new BossPanel();
-            BossPanel Monstr = new BossPanel();
-            BossPanel Necromancer = new BossPanel();
-            BossPanel EaterOfDarkness = new BossPanel();
-            BossPanel Chudo = new BossPanel();
-            BossPanel Blacksmith = new BossPanel();
-            BossPanel MightyShulker = new BossPanel();
-            BossPanel Caster = new BossPanel();
-            BossPanel DeadHourseman = new BossPanel();
-            BossPanel Samurai = new BossPanel();
-            BossPanel DeadLord = new BossPanel();
-            BossPanel ShadowLord = new BossPanel();
-            BossPanel Goliath = new BossPanel();
-            BossPanel Destroyer = new BossPanel();
-            BossPanel Scream = new BossPanel();
-            BossPanel SpectralCube = new BossPanel();
-            BossPanel Shadow = new BossPanel();
-            BossPanel HeraldOfHell = new BossPanel();
-            BossPanel Blaze = new BossPanel();
-            BossPanel Piglin = new BossPanel();
-            BossPanel Hoglin = new BossPanel();
-            BossPanel ZombiePiglin = new BossPanel();
-            BossPanel BrutalPiglin = new BossPanel();
-            BossPanel Magma = new BossPanel();
-            BossPanel Zoglin = new BossPanel();
-            BossPanel HellKnight = new BossPanel();
+            
+
+            InstatieteBossPanels();
+            
+
+            
 
 
+
+
+
+        }
+        public void InstatieteBossPanels()
+        {
             BossPanel[] bosses = new BossPanel[] { AncientArcher, Slime, SteelGuard, Nightmare, Twins, FireLord, Spider, Drowned,
                 Wizard, Death, Rider, Pillager, LavaCube, GhostHunter, BlackDragon,Giant,SnowMonster,AccursedLegion,Monstr,Necromancer,
                 EaterOfDarkness,Chudo,Blacksmith,MightyShulker,Caster,DeadHourseman,Samurai,DeadLord,ShadowLord,Goliath,Destroyer,Scream,
                 SpectralCube,Shadow,HeraldOfHell,Blaze,Piglin,Hoglin,ZombiePiglin,BrutalPiglin,Magma,Zoglin,HellKnight };
+
 
 
             string bossName = "";
@@ -77,7 +91,6 @@ namespace Boss_Timer
             }
             this.Width = Int32.Parse(ConfigurationManager.AppSettings["form1sizeX"]);
             this.Height = Int32.Parse(ConfigurationManager.AppSettings["form1sizeY"]);
-
             for (int i = 0; i < bosses.Length; i++)
             {
                 if (activeBosses[i])
@@ -115,6 +128,7 @@ namespace Boss_Timer
                     else if (bosses[i] == Destroyer) bossName = "destroyerCD";
                     else if (bosses[i] == Scream) bossName = "screamCD";
                     else if (bosses[i] == SpectralCube) bossName = "spectralCubeCD";
+                    else if (bosses[i] == Shadow) bossName = "shadowCD";
                     else if (bosses[i] == HeraldOfHell) bossName = "heraldOfHellCD";
                     else if (bosses[i] == Blaze) bossName = "blazeCD";
                     else if (bosses[i] == Piglin) bossName = "piglinCD";
@@ -127,20 +141,15 @@ namespace Boss_Timer
                     bosses[i].InstantiatePanel(flowLayoutPanel1, 0, 0, bossName);
                     bosses[i].CreateEventHandlers();
                 }
+                else
+                {
+                    bosses[i].DisenablePanel();
+                }
             }
-
-
-
-
-
-        }
-        private void InstatieteBossPanels(BossPanel[] bosses, bool[] activebosses)
-        {
-
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            SettingsForm settingsForm = new SettingsForm();
+            SettingsForm settingsForm = new SettingsForm(this);
             settingsForm.Show();
 
         }

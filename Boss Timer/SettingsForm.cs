@@ -13,10 +13,18 @@ namespace Boss_Timer
 {
     public partial class SettingsForm : Form
     {
-        bool[] bosses = new bool[43] ;
+        bool[] bosses = new bool[43];
         string activeBosses;
-       
+        Form1 form1;
+
         public SettingsForm()
+        {
+            InitializeComponent();
+            numericUpDown1.Value = Int32.Parse(ConfigurationManager.AppSettings["msInSec"]);
+            
+
+        }
+        public SettingsForm(Form1 f)
         {
             InitializeComponent();
             numericUpDown1.Value = Int32.Parse(ConfigurationManager.AppSettings["msInSec"]);
@@ -27,13 +35,7 @@ namespace Boss_Timer
                 checking[i] = Convert.ToBoolean(activeBossesStr[i]);
             }
             CheckingCheckingboxes(checking);
-           
-        }
-        public SettingsForm(Form1 f)
-        {
-            InitializeComponent();
-            numericUpDown1.Value = Int32.Parse(ConfigurationManager.AppSettings["msInSec"]);
-         
+            form1 = f;
         }
         public void RefreshConfig()
         {
@@ -48,55 +50,55 @@ namespace Boss_Timer
             configuration.AppSettings.Settings["msInSec"].Value = Convert.ToString(numericUpDown1.Value);
             configuration.Save(ConfigurationSaveMode.Minimal, true);
             ConfigurationManager.RefreshSection("appSettings");
-            
-            
+
+
             for (int i = 0; i < bosses.Length; i++)
             {
                 bosses[i] = false;
             }
-            if(checkBox1.Checked) bosses[0] = true;
-            if(checkBox2.Checked) bosses[1] = true;
-            if(checkBox3.Checked) bosses[2] = true;
-            if(checkBox4.Checked) bosses[3] = true;
-            if(checkBox5.Checked) bosses[4] = true;
-            if(checkBox6.Checked) bosses[5] = true;
-            if(checkBox7.Checked) bosses[6] = true;
-            if(checkBox8.Checked) bosses[7] = true;
-            if(checkBox9.Checked) bosses[8] = true;
-            if(checkBox10.Checked) bosses[9] = true;
-            if(checkBox11.Checked) bosses[10] = true;
-            if(checkBox12.Checked) bosses[11] = true;
-            if(checkBox13.Checked) bosses[12] = true;
-            if(checkBox14.Checked) bosses[13] = true;
-            if(checkBox15.Checked) bosses[14] = true;
-            if(checkBox16.Checked) bosses[15] = true;
-            if(checkBox17.Checked) bosses[16] = true;
-            if(checkBox18.Checked) bosses[17] = true;
-            if(checkBox19.Checked) bosses[18] = true;
-            if(checkBox20.Checked) bosses[19] = true;
-            if(checkBox21.Checked) bosses[20] = true;
-            if(checkBox22.Checked) bosses[21] = true;
-            if(checkBox23.Checked) bosses[22] = true;
-            if(checkBox24.Checked) bosses[23] = true;
-            if(checkBox25.Checked) bosses[24] = true;
-            if(checkBox26.Checked) bosses[25] = true;
-            if(checkBox27.Checked) bosses[26] = true;
-            if(checkBox28.Checked) bosses[27] = true;
-            if(checkBox29.Checked) bosses[28] = true;
-            if(checkBox30.Checked) bosses[39] = true;
-            if(checkBox31.Checked) bosses[30] = true;
-            if(checkBox32.Checked) bosses[31] = true;
-            if(checkBox33.Checked) bosses[32] = true;
-            if(checkBox34.Checked) bosses[33] = true;
-            if(checkBox35.Checked) bosses[34] = true;
-            if(checkBox36.Checked) bosses[35] = true;
-            if(checkBox37.Checked) bosses[36] = true;
-            if(checkBox38.Checked) bosses[37] = true;
-            if(checkBox39.Checked) bosses[38] = true;
-            if(checkBox40.Checked) bosses[39] = true;
-            if(checkBox41.Checked) bosses[40] = true;
-            if(checkBox42.Checked) bosses[41] = true;
-            if(checkBox43.Checked) bosses[42] = true;
+            if (checkBox1.Checked) bosses[0] = true;
+            if (checkBox2.Checked) bosses[1] = true;
+            if (checkBox3.Checked) bosses[2] = true;
+            if (checkBox4.Checked) bosses[3] = true;
+            if (checkBox5.Checked) bosses[4] = true;
+            if (checkBox6.Checked) bosses[5] = true;
+            if (checkBox7.Checked) bosses[6] = true;
+            if (checkBox8.Checked) bosses[7] = true;
+            if (checkBox9.Checked) bosses[8] = true;
+            if (checkBox10.Checked) bosses[9] = true;
+            if (checkBox11.Checked) bosses[10] = true;
+            if (checkBox12.Checked) bosses[11] = true;
+            if (checkBox13.Checked) bosses[12] = true;
+            if (checkBox14.Checked) bosses[13] = true;
+            if (checkBox15.Checked) bosses[14] = true;
+            if (checkBox16.Checked) bosses[15] = true;
+            if (checkBox17.Checked) bosses[16] = true;
+            if (checkBox18.Checked) bosses[17] = true;
+            if (checkBox19.Checked) bosses[18] = true;
+            if (checkBox20.Checked) bosses[19] = true;
+            if (checkBox21.Checked) bosses[20] = true;
+            if (checkBox22.Checked) bosses[21] = true;
+            if (checkBox23.Checked) bosses[22] = true;
+            if (checkBox24.Checked) bosses[23] = true;
+            if (checkBox25.Checked) bosses[24] = true;
+            if (checkBox26.Checked) bosses[25] = true;
+            if (checkBox27.Checked) bosses[26] = true;
+            if (checkBox28.Checked) bosses[27] = true;
+            if (checkBox29.Checked) bosses[28] = true;
+            if (checkBox30.Checked) bosses[39] = true;
+            if (checkBox31.Checked) bosses[30] = true;
+            if (checkBox32.Checked) bosses[31] = true;
+            if (checkBox33.Checked) bosses[32] = true;
+            if (checkBox34.Checked) bosses[33] = true;
+            if (checkBox35.Checked) bosses[34] = true;
+            if (checkBox36.Checked) bosses[35] = true;
+            if (checkBox37.Checked) bosses[36] = true;
+            if (checkBox38.Checked) bosses[37] = true;
+            if (checkBox39.Checked) bosses[38] = true;
+            if (checkBox40.Checked) bosses[39] = true;
+            if (checkBox41.Checked) bosses[40] = true;
+            if (checkBox42.Checked) bosses[41] = true;
+            if (checkBox43.Checked) bosses[42] = true;
 
             for (int i = 0; i < bosses.Length; i++)
             {
@@ -106,13 +108,14 @@ namespace Boss_Timer
                     activeBosses = activeBosses + "," + Convert.ToString(bosses[i]);
 
                 }
- 
-                
+
+
             }
-            
+
             configuration.AppSettings.Settings["bosses"].Value = activeBosses;
             configuration.Save(ConfigurationSaveMode.Minimal, true);
             ConfigurationManager.RefreshSection("appSettings");
+            form1.InstatieteBossPanels();
             this.Close();
         }
 
@@ -120,7 +123,7 @@ namespace Boss_Timer
         {
             SaveSettings();
         }
-        
+
         public void CheckingCheckingboxes(bool[] b)
         {
             if (b[0]) checkBox1.Checked = true;
@@ -166,9 +169,9 @@ namespace Boss_Timer
             if (b[40]) checkBox41.Checked = true;
             if (b[41]) checkBox42.Checked = true;
             if (b[42]) checkBox43.Checked = true;
-            
-            
-            
+
+
+
         }
     }
 }

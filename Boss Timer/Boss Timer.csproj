@@ -59,6 +59,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +82,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +101,158 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ancientArcherCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SteelGuard.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blacksmithCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nightmareCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\twinsCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slimeCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wizardCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blazeCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\casterCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drawnedCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deathCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\riderCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pillagerCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lavaCubeCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ghostHunterCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blackDragonCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\giantCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\snowMonsterCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accursedLegionCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\monstrCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\necromancerCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eaterOfDarknessCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chudoCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mightyShulkerCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deadHoursemanCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\samuraiCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deadLordCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shadowLordCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\goliathCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\destroyerCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\screamCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spectralCubeCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shadowCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heraldOfHellCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireLordCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spiderCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hellKnightCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\piglinCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hoglinCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zombiePiglinCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brutalPiglinCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magmaCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoglinCD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playButton.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\repeatButton.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pauseButton.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settingsButton.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
