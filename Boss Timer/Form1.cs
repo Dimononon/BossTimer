@@ -51,6 +51,7 @@ namespace Boss_Timer
         BossPanel Zoglin = new BossPanel();
         BossPanel HellKnight = new BossPanel();
 
+        BossPanel[] bosses;
         public Form1()
         {
 
@@ -75,7 +76,7 @@ namespace Boss_Timer
         }
         public void InstatieteBossPanels()
         {
-            BossPanel[] bosses = new BossPanel[] { AncientArcher, Slime, SteelGuard, Nightmare, Twins, FireLord, Spider, Drowned,
+            bosses = new BossPanel[] { AncientArcher, Slime, SteelGuard, Nightmare, Twins, FireLord, Spider, Drowned,
                 Wizard, Death, Rider, Pillager, LavaCube, GhostHunter, BlackDragon,Giant,SnowMonster,AccursedLegion,Monstr,Necromancer,
                 EaterOfDarkness,Chudo,Blacksmith,MightyShulker,Caster,DeadHourseman,Samurai,DeadLord,ShadowLord,Goliath,Destroyer,Scream,
                 SpectralCube,Shadow,HeraldOfHell,Blaze,Piglin,Hoglin,ZombiePiglin,BrutalPiglin,Magma,Zoglin,HellKnight };
@@ -91,6 +92,7 @@ namespace Boss_Timer
             }
             this.Width = Int32.Parse(ConfigurationManager.AppSettings["form1sizeX"]);
             this.Height = Int32.Parse(ConfigurationManager.AppSettings["form1sizeY"]);
+            //AncientArcher.loadTimingsFromSettings();
             for (int i = 0; i < bosses.Length; i++)
             {
                 if (activeBosses[i])
@@ -146,6 +148,10 @@ namespace Boss_Timer
                     bosses[i].DisenablePanel();
                 }
             }
+            for (int i = 0; i < bosses.Length; i++)
+            {
+                bosses[i].loadTimingsFromSettings();
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -162,6 +168,14 @@ namespace Boss_Timer
             configuration.Save(ConfigurationSaveMode.Minimal, true);
             ConfigurationManager.RefreshSection("appSettings");
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 43; i++)
+            {
+                bosses[i].exportTimings();
+            }
         }
     }
 }

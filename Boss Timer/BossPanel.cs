@@ -15,8 +15,8 @@ namespace Boss_Timer
 {
     public class BossPanel
     {
-        public int seconds = 0, msInSec = 1000, bossCD = 0;
-        private bool isPlaying = false;
+        public int seconds = 0, msInSec = 1000, bossCD = 0, index;
+        private bool isPlaying = false, oneTick=false;
         private string bossRussianName;
 
         private Panel panel = new Panel();
@@ -29,59 +29,61 @@ namespace Boss_Timer
         private PictureBox icon = new PictureBox();
         private Label name = new Label();
         private BossCDBar progressBar = new BossCDBar();
-        //private ProgressBar progressBar = new ProgressBar();
+
+        
+        private long[] timings = new long[43];
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
 
         public void InstantiatePanel(FlowLayoutPanel form, int left, int top, string bossName)
         {
-            
+
             if (!Int32.TryParse(ConfigurationManager.AppSettings[bossName], out bossCD))
             {
                 throw new Exception("Can't read config");
             }
-            if (bossName == "ancientArcherCD") bossRussianName = "Древний лучник";
-            else if (bossName == "slimeCD") bossRussianName = "Слизень";
-            else if (bossName == "steelguardCD") bossRussianName = "Стальной страж";
-            else if (bossName == "nightmareCD") bossRussianName = "Кошмар";
-            else if (bossName == "twinsCD") bossRussianName = "Близнецы";
-            else if (bossName == "fireLordCD") bossRussianName = "Повелитель огня";
-            else if (bossName == "spiderCD") bossRussianName = "Паучиха";
-            else if (bossName == "drownedCD") bossRussianName = "Утопленник";
-            else if (bossName == "wizardCD") bossRussianName = "Колдун";
-            else if (bossName == "deathCD") bossRussianName = "Смерть";
-            else if (bossName == "riderCD") bossRussianName = "Наездник";
-            else if (bossName == "pillagerCD") bossRussianName = "Разбойник";
-            else if (bossName == "lavaCubeCD") bossRussianName = "Лавовый куб";
-            else if (bossName == "ghostHunterCD") bossRussianName = "Призрачный охотник";
-            else if (bossName == "blackDragonCD") bossRussianName = "Чёрный дракон";
-            else if (bossName == "giantCD") bossRussianName = "Гигант";
-            else if (bossName == "snowMonsterCD") bossRussianName = "Снежный монстр";
-            else if (bossName == "accursedLegionCD") bossRussianName = "Проклятый легион";
-            else if (bossName == "monstrCD") bossRussianName = "Монстр";
-            else if (bossName == "necromancerCD") bossRussianName = "Некромант";
-            else if (bossName == "eaterOfDarknessCD") bossRussianName = "Пожиратель тьмы";
-            else if (bossName == "chudoCD") bossRussianName = "Чудовище";
-            else if (bossName == "blacksmithCD") bossRussianName = "Кузнец";
-            else if (bossName == "mightyShulkerCD") bossRussianName = "Могущественный шалкер";
-            else if (bossName == "casterCD") bossRussianName = "Заклинатель";
-            else if (bossName == "deadHoursemanCD") bossRussianName = "Мёртвый всадний";
-            else if (bossName == "samuraiCD") bossRussianName = "Самурай";
-            else if (bossName == "deadLordCD") bossRussianName = "Повелитель мёртвых";
-            else if (bossName == "shadowLordCD") bossRussianName = "Теневой лорд";
-            else if (bossName == "goliathCD") bossRussianName = "Голиаф";
-            else if (bossName == "destroyerCD") bossRussianName = "Разрушитель";
-            else if (bossName == "screamCD") bossRussianName = "Крик";
-            else if (bossName == "spectralCubeCD") bossRussianName = "Спектральный куб";
-            else if (bossName == "shadowCD") bossRussianName = "Тень";
-            else if (bossName == "heraldOfHellCD") bossRussianName = "Вестник ада";
-            else if (bossName == "blazeCD") bossRussianName = "Ифрит";
-            else if (bossName == "piglinCD") bossRussianName = "Пиглин";
-            else if (bossName == "hoglinCD") bossRussianName = "Хоглин";
-            else if (bossName == "zombiePiglinCD") bossRussianName = "Зомби пиглин";
-            else if (bossName == "brutalPiglinCD") bossRussianName = "Брутальный пиглин";
-            else if (bossName == "magmaCD") bossRussianName = "Магма";
-            else if (bossName == "zoglinCD") bossRussianName = "Зоглин";
-            else if (bossName == "hellKnightCD") bossRussianName = "Адский рыцарь";
+            if (bossName == "ancientArcherCD") { bossRussianName = "Древний лучник"; index = 0; }
+            else if (bossName == "slimeCD") { bossRussianName = "Слизень"; index = 1; }
+            else if (bossName == "steelguardCD") { bossRussianName = "Стальной страж"; index = 2; }
+            else if (bossName == "nightmareCD") { bossRussianName = "Кошмар"; index = 3; }
+            else if (bossName == "twinsCD") { bossRussianName = "Близнецы"; index = 4; }
+            else if (bossName == "fireLordCD") { bossRussianName = "Повелитель огня"; index = 5; }
+            else if (bossName == "spiderCD") { bossRussianName = "Паучиха"; index = 6; }
+            else if (bossName == "drownedCD") { bossRussianName = "Утопленник"; index = 7; }
+            else if (bossName == "wizardCD") { bossRussianName = "Колдун"; index = 8; }
+            else if (bossName == "deathCD") { bossRussianName = "Смерть"; index = 9; }
+            else if (bossName == "riderCD") { bossRussianName = "Наездник"; index = 10; }
+            else if (bossName == "pillagerCD") { bossRussianName = "Разбойник"; index = 11; }
+            else if (bossName == "lavaCubeCD") { bossRussianName = "Лавовый куб"; index = 12; }
+            else if (bossName == "ghostHunterCD") { bossRussianName = "Призрачный охотник"; index = 13; }
+            else if (bossName == "blackDragonCD") { bossRussianName = "Чёрный дракон"; index = 14; }
+            else if (bossName == "giantCD") { bossRussianName = "Гигант"; index = 15; }
+            else if (bossName == "snowMonsterCD") { bossRussianName = "Снежный монстр"; index = 16; }
+            else if (bossName == "accursedLegionCD") { bossRussianName = "Проклятый легион"; index = 17; }
+            else if (bossName == "monstrCD") { bossRussianName = "Монстр"; index = 18; }
+            else if (bossName == "necromancerCD") { bossRussianName = "Некромант"; index = 19; }
+            else if (bossName == "eaterOfDarknessCD") { bossRussianName = "Пожиратель тьмы"; index = 20; }
+            else if (bossName == "chudoCD") { bossRussianName = "Чудовище"; index = 21; }
+            else if (bossName == "blacksmithCD") { bossRussianName = "Кузнец"; index = 22; }
+            else if (bossName == "mightyShulkerCD") { bossRussianName = "Могущественный шалкер"; index = 23; }
+            else if (bossName == "casterCD") { bossRussianName = "Заклинатель"; index = 24; }
+            else if (bossName == "deadHoursemanCD") { bossRussianName = "Мёртвый всадний"; index = 25; }
+            else if (bossName == "samuraiCD") { bossRussianName = "Самурай"; index = 26; }
+            else if (bossName == "deadLordCD") { bossRussianName = "Повелитель мёртвых"; index = 27; }
+            else if (bossName == "shadowLordCD") { bossRussianName = "Теневой лорд"; index = 28; }
+            else if (bossName == "goliathCD") { bossRussianName = "Голиаф"; index = 29; }
+            else if (bossName == "destroyerCD") { bossRussianName = "Разрушитель"; index = 30; }
+            else if (bossName == "screamCD") { bossRussianName = "Крик"; index = 31; }
+            else if (bossName == "spectralCubeCD") { bossRussianName = "Спектральный куб"; index = 32; }
+            else if (bossName == "shadowCD") { bossRussianName = "Тень"; index = 33; }
+            else if (bossName == "heraldOfHellCD") { bossRussianName = "Вестник ада"; index = 34; }
+            else if (bossName == "blazeCD") { bossRussianName = "Ифрит"; index = 35; }
+            else if (bossName == "piglinCD") { bossRussianName = "Пиглин"; index = 36; }
+            else if (bossName == "hoglinCD") { bossRussianName = "Хоглин"; index = 37; }
+            else if (bossName == "zombiePiglinCD") { bossRussianName = "Зомби пиглин"; index = 38; }
+            else if (bossName == "brutalPiglinCD") { bossRussianName = "Брутальный пиглин"; index = 39; }
+            else if (bossName == "magmaCD") { bossRussianName = "Магма"; index = 40; }
+            else if (bossName == "zoglinCD") { bossRussianName = "Зоглин"; index = 41; }
+            else if (bossName == "hellKnightCD") { bossRussianName = "Адский рыцарь"; index = 42; }
 
 
             form.Controls.Add(panel);
@@ -204,11 +206,11 @@ namespace Boss_Timer
         }
         async void TimeTick()
         {
-            while (isPlaying)
+            while (isPlaying||oneTick)
             {
                 if (seconds > 0)
                 {
-                    
+
                     textHours.Text = Convert.ToString(seconds / 3600);
                     textMinutes.Text = Convert.ToString((seconds - Convert.ToInt32(textHours.Text) * 3600) / 60);
                     textSeconds.Text = Convert.ToString((seconds - Convert.ToInt32(textHours.Text) * 3600) - (Convert.ToInt32(textMinutes.Text) * 60));
@@ -242,6 +244,7 @@ namespace Boss_Timer
                     textMinutes.Text = "0";
                     textSeconds.Text = "0";
                 }
+                oneTick = false;
             }
         }
 
@@ -252,7 +255,7 @@ namespace Boss_Timer
             wplayer.controls.play();
             await Task.Delay(60000);
             panel.BackColor = SystemColors.Control;
-            
+
         }
 
         public void StartTimer()
@@ -262,8 +265,9 @@ namespace Boss_Timer
                 isPlaying = true;
                 seconds = (Convert.ToInt32(textHours.Text) * 3600) + (Convert.ToInt32(textMinutes.Text) * 60) + Convert.ToInt32(textSeconds.Text);
                 TimeTick();
+                saveTimings();
             }
-            
+
         }
         public void StartTimer(int bossCD)
         {
@@ -272,6 +276,8 @@ namespace Boss_Timer
                 isPlaying = true;
                 seconds = bossCD;
                 TimeTick();
+                saveTimings();
+
             }
         }
         public void CreateEventHandlers()
@@ -292,6 +298,46 @@ namespace Boss_Timer
         private void repeat_Click(object sender, EventArgs e)
         {
             StartTimer(bossCD);
+        }
+        private void saveTimings()
+        {
+            timings[index] = DateTimeOffset.Now.ToUnixTimeSeconds() - (bossCD - seconds);
+            saveTimingsToSettings();
+        }
+        private void saveTimingsToSettings()
+        {
+            string timingsStr = "";
+            for (int i = 0; i < 43; i++)
+            {
+                if (i != 42)
+                {
+                    timingsStr += (Convert.ToString(timings[i]) + ",");
+                }
+                else
+                {
+                    timingsStr += Convert.ToString(timings[i]);
+                }
+            }
+            Properties.Settings.Default.timingsStr = timingsStr;
+            Properties.Settings.Default.Save();
+        }
+        public void loadTimingsFromSettings()
+        {
+            string timingsStr = "";
+            string[] timingsStrArray= new string[43];
+            timingsStr = Properties.Settings.Default.timingsStr;
+            timingsStrArray = timingsStr.Split(',');
+            for (int i = 0;i < 43; i++)
+            {
+                timings[i] =Int64.Parse(timingsStrArray[i]);
+            }
+            exportTimings();
+        }
+        public void exportTimings()
+        {
+            //seconds = bossCD - Convert.ToInt32(DateTimeOffset.Now.ToUnixTimeSeconds() - timings[index]);
+            StartTimer(bossCD - Convert.ToInt32(DateTimeOffset.Now.ToUnixTimeSeconds() - timings[index]));
+            
         }
     }
 }
