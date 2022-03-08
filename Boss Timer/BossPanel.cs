@@ -16,7 +16,8 @@ namespace Boss_Timer
     public class BossPanel
     {
         public int seconds = 0, msInSec = 1000, bossCD = 0, index;
-        private bool isPlaying = false, oneTick=false;
+        private bool  oneTick = false;
+        public bool isPlaying = false;
         private string bossRussianName;
 
         private Panel panel = new Panel();
@@ -29,11 +30,14 @@ namespace Boss_Timer
         private PictureBox icon = new PictureBox();
         private Label name = new Label();
         private BossCDBar progressBar = new BossCDBar();
+        private Form1 form1;
 
         
-        private long[] timings = new long[43];
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
-
+        public void GetForm1(Form1 f)
+        {
+            form1 = f;
+        }
         public void InstantiatePanel(FlowLayoutPanel form, int left, int top, string bossName)
         {
 
@@ -206,7 +210,7 @@ namespace Boss_Timer
         }
         async void TimeTick()
         {
-            while (isPlaying||oneTick)
+            while (isPlaying || oneTick)
             {
                 if (seconds > 0)
                 {
@@ -301,43 +305,48 @@ namespace Boss_Timer
         }
         private void saveTimings()
         {
-            timings[index] = DateTimeOffset.Now.ToUnixTimeSeconds() - (bossCD - seconds);
+            form1.timings[index] = DateTimeOffset.Now.ToUnixTimeSeconds() - (bossCD - seconds);
             saveTimingsToSettings();
         }
         private void saveTimingsToSettings()
         {
             string timingsStr = "";
+            timingsStr = "";
             for (int i = 0; i < 43; i++)
             {
                 if (i != 42)
                 {
-                    timingsStr += (Convert.ToString(timings[i]) + ",");
+                    timingsStr += (Convert.ToString(form1.timings[i]) + ",");
                 }
                 else
                 {
-                    timingsStr += Convert.ToString(timings[i]);
+                    timingsStr += Convert.ToString(form1.timings[i]);
                 }
             }
             Properties.Settings.Default.timingsStr = timingsStr;
             Properties.Settings.Default.Save();
+            //Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //ConfigurationManager.AppSettings["timings"] = timingsStr;
+            //configuration.Save(ConfigurationSaveMode.Minimal, true);
+            //ConfigurationManager.RefreshSection("appSettings");
         }
         public void loadTimingsFromSettings()
         {
             string timingsStr = "";
-            string[] timingsStrArray= new string[43];
+            string[] timingsStrArray = new string[43];
             timingsStr = Properties.Settings.Default.timingsStr;
             timingsStrArray = timingsStr.Split(',');
-            for (int i = 0;i < 43; i++)
+            for (int i = 0; i < 43; i++)
             {
-                timings[i] =Int64.Parse(timingsStrArray[i]);
+                form1.timings[i] = Int64.Parse(timingsStrArray[i]);
             }
             exportTimings();
         }
         public void exportTimings()
         {
             //seconds = bossCD - Convert.ToInt32(DateTimeOffset.Now.ToUnixTimeSeconds() - timings[index]);
-            StartTimer(bossCD - Convert.ToInt32(DateTimeOffset.Now.ToUnixTimeSeconds() - timings[index]));
-            
+            StartTimer(bossCD - Convert.ToInt32(DateTimeOffset.Now.ToUnixTimeSeconds() - form1.timings[index]));
+
         }
     }
 }

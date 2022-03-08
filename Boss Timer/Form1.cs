@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Configuration;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+using System.Configuration;
+
 
 namespace Boss_Timer
 {
@@ -52,6 +55,7 @@ namespace Boss_Timer
         BossPanel HellKnight = new BossPanel();
 
         BossPanel[] bosses;
+        public long[] timings = new long[43];
         public Form1()
         {
 
@@ -62,12 +66,12 @@ namespace Boss_Timer
         public void ConfigurateForm()
         {
 
-            
+
 
             InstatieteBossPanels();
-            
 
-            
+
+
 
 
 
@@ -142,6 +146,7 @@ namespace Boss_Timer
                     else if (bosses[i] == HellKnight) bossName = "hellKnightCD";
                     bosses[i].InstantiatePanel(flowLayoutPanel1, 0, 0, bossName);
                     bosses[i].CreateEventHandlers();
+                    bosses[i].GetForm1(this);
                 }
                 else
                 {
@@ -170,10 +175,34 @@ namespace Boss_Timer
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        async void button2_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 43; i++)
+            //export timings
+            System.Windows.Forms.Clipboard.SetText(Properties.Settings.Default.timingsStr);
+            button2.BackgroundImage = Resources.clipboard;
+            await Task.Delay(1000);
+            button2.BackgroundImage = Resources.exportButton;
+        }
+
+        async private void button3_Click(object sender, EventArgs e)
+        {
+            string timeStr = Microsoft.VisualBasic.Interaction.InputBox("Вставте строку с таймингами", "Import Settings", "", this.Width / 2, this.Height / 2);
+            if (timeStr != "")
             {
+                Properties.Settings.Default.timingsStr = timeStr;
+            }
+
+            
+            for (int i = 0; i < bosses.Length; i++)
+            {
+                bosses[i].loadTimingsFromSettings();
+                bosses[i].isPlaying = false;
+                
+            }
+            await Task.Delay(Int32.Parse(ConfigurationManager.AppSettings["msInSec"]));
+            for (int i = 0; i < bosses.Length; i++)
+            {
+                
                 bosses[i].exportTimings();
             }
         }

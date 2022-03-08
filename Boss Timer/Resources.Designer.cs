@@ -19,7 +19,7 @@ namespace Boss_Timer {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -143,6 +143,16 @@ namespace Boss_Timer {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clipboard {
+            get {
+                object obj = ResourceManager.GetObject("clipboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap deadHoursemanCD {
             get {
                 object obj = ResourceManager.GetObject("deadHoursemanCD", resourceCulture);
@@ -196,6 +206,16 @@ namespace Boss_Timer {
         internal static System.Drawing.Bitmap eaterOfDarknessCD {
             get {
                 object obj = ResourceManager.GetObject("eaterOfDarknessCD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exportButton {
+            get {
+                object obj = ResourceManager.GetObject("exportButton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -266,6 +286,16 @@ namespace Boss_Timer {
         internal static System.Drawing.Bitmap hoglinCD {
             get {
                 object obj = ResourceManager.GetObject("hoglinCD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap importButton {
+            get {
+                object obj = ResourceManager.GetObject("importButton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
